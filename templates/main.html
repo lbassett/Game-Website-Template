@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Main Page</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/games.js"></script>
+</head>
+<body>
+<a href='/logout'>Logout</a>
+<center><h1>Games</h1></center>
+<center><h2> {{user}} </h2></center>
+<div class="nav-bar">
+<div class="buttons">
+<div class="button newgame" onclick="newgame()">New Game</div>
+    <script>
+    function newgame() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/make_game", true);
+        xhr.send();
+    }
+    </script>
+</div>
+</div>
+<h2>Open Games</h2>
+<div id="opengametables"></div>
+<script>getopengames('{{user}}')</script>
+<script>
+    function joingame(gameid) {
+        var xhr = new XMLHttpRequest();
+        var url = "/join_game/" + gameid
+        xhr.open("POST", url, true);
+        xhr.send();
+    }
+</script>
+<h2>Your Current Games</h2>
+<div id ="currentgametable"></div>
+<script>getcurrentgames('{{user}}')</script>
+</body>
+</html>
