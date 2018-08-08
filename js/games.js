@@ -2,12 +2,12 @@
 function getopengames(username) {
     var url = '/get_opengames';
     var opentablehtml = '<h3>Available Games</h3><table id="opengamelist"><tr bgcolor = "#B9B9B9"><th>Game</th><th>Competitor</th><th>Join</th></tr>';
-    var pendingtablehtml = '<h3>Waiting for Opponent</h3><table id="pendinggamelist"><tr bgcolor = "#B9B9B9"><th>Game</th></tr>';
+    var pendingtablehtml = '<h3>Waiting for Opponent</h3><table id="pendinggamelist"><tr bgcolor = "#B9B9B9"><th>Game</th><th>Cancel</th></tr>';
     $.getJSON(url, function(data) {
         var i;
         for (i = 0; i < data.length; i++) {
             if (data[i][1] == username){
-                pendingtablehtml += '<tr bgcolor="#EDEDED"><td>' + data[i][0] + '</td>';
+                pendingtablehtml += '<tr bgcolor="#EDEDED"><td>' + data[i][0] + '</td><td><div class="button cancel" onclick="cancelgame(' + data[i][0] + ')">Cancel</div></td></r>';
             } else {
                 opentablehtml += '<tr bgcolor="#EDEDED"><td>' + data[i][0] + '</td><td>' + data[i][1] + '</td><td><div class="button join" onclick="joingame(' + data[i][0] + ')">Join</div></td></r>';
             }

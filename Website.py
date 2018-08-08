@@ -94,7 +94,6 @@ def get_currentgames():
     for x in global_var.usergamesdict[username]:
         game1 = global_var.currentgamedict[x]
         gamelist.append([x,game1.player1, game1.player2, game1.move])
-    print(gamelist)
     return(json.dumps(gamelist))
 
 @app.route('/make_game', methods=['POST'])
@@ -102,7 +101,6 @@ def make_game():
     username = session['user']
     game1 = game(username,global_var.gameid)
     global_var.opengamedict[global_var.gameid] = game1
-    print(global_var.gameid)
     global_var.gameid += 1
     return(redirect('/'))
 
@@ -118,14 +116,25 @@ def join_game(gameid):
             global_var.currentgamedict[gameidnum] = game1
             global_var.usergamesdict[username] += [game1.idnum]
             global_var.usergamesdict[game1.player1] += [game1.idnum]
-            print(global_var.opengamedict)
-            print(global_var.currentgamedict)
-            print(global_var.usergamesdict)
             return redirect('/')
         else:
             return redirect('/')
     else:
         return redirect('/')
+
+@app.route('/cancel_game/<gameid>', methods = ['POST'])
+def cancel(gameid):
+    username = session['user']
+    gameidnum = int(gameid)
+    if gameidnum in global_var.opengamedict:
+        if global_var.opengamedict[gameidnum].player1 == username:
+            del global_var.opengamedict[gameidnum]
+            return(redirect('/'))
+        else:
+            return(redirect('/'))
+    else:
+        return(redirect('/'))
+
 
 @app.route('/js/<path:path>')
 def serve_js(path):
@@ -146,6 +155,5 @@ if __name__ == "__main__":
         r = csv.DictReader(csvfile,['username','password'])
         for row in r:
             name = row['username']
-            print(name)
             global_var.usergamesdict[name] = []
     app.run()

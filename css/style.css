@@ -24,7 +24,7 @@ body {
 .nav-bar .buttons .button.newgame {
   background-color: white;
   color: black;
-  border: 1px solid #0099ff;
+  border: 3px solid #0099ff;
 }
 .nav-bar .buttons .button.newgame:hover {
   background-color: #0099ff;
@@ -32,12 +32,12 @@ body {
   cursor: pointer;
 }
 
-.nav-bar .buttons .button.third {
+.nav-bar .buttons .button.changepassword {
   background-color: white;
   color: black;
-  border: 1px solid #ff3300;
+  border: 3px solid #ff3300;
 }
-.nav-bar .buttons .button.third:hover {
+.nav-bar .buttons .button.changepassword:hover {
   background-color: #ff3300;
   color: white;
   cursor: pointer;
@@ -53,4 +53,17 @@ body {
   color: black;
   cursor: pointer;
   border: solid #7CFC00;
+}
+
+.button.cancel {
+  background-color: #8B0000;
+  color: white;
+  border: solid #8B0000;
+}
+
+.button.cancel:hover {
+  background-color: #FFC0CB;
+  color: black;
+  cursor: pointer;
+  border: solid #FFC0CB;
 }

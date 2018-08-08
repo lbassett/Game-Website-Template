@@ -32,6 +32,14 @@
         xhr.send();
     }
 </script>
+<script>
+    function cancelgame(gameid) {
+        var xhr = new XMLHttpRequest();
+        var url = "/cancel_game/" + gameid
+        xhr.open("POST", url, true);
+        xhr.send();
+    }
+</script>
 <h2>Your Current Games</h2>
 <div id ="currentgametable"></div>
 <script>getcurrentgames('{{user}}')</script>
