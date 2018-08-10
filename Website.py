@@ -14,6 +14,8 @@ import os
 import csv
 import global_var
 from game import *
+from passlib.hash import pbkdf2_sha256
+import base64
 
 app = Flask(__name__)
 app.secret_key = 'SecretKey'
@@ -44,12 +46,13 @@ def main():
         return(render_template('login.html'))
     elif request.method == 'POST':
         username = request.form['username']
-        password = request.form['password']
+        password = request.form['password'] 
         with open('usernamepassword.csv') as csvfile:
             r = csv.DictReader(csvfile,['username','password'])
             for row in r:
-                if row['username'] == username and row['password'] == password:
-                    return(do_login(username))
+                if row['username'] == username:
+                    if pbkdf2_sha256.verify(password,row['password']):
+                        return(do_login(username))
     return(do_login(None))
 
 @app.route('/make_account', methods=['GET', 'POST'])
@@ -66,7 +69,8 @@ def create_account():
                 if row['username'] == username:
                     cont = False
         if cont:
-            register(username, password)
+            hashedpass = pbkdf2_sha256.hash(password)
+            register(username, hashedpass)
             global_var.usergamesdict[username] = []
             return(redirect('/login'))
         else:
