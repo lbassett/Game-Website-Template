@@ -1,21 +1,38 @@
 import BattleLineHands
 import GlobalBattleLineVals
+import random
 
 
 class BLstatus:
 
 	def __init__(self):
-		self.status = [[None,None,None,None,None,None,None]]*11 + [[None]]
 		self.hands = self.initializehands()
 		self.flags = [0,0,0,0,0,0,0,0,0]
 		self.ones = 0
 		self.twos = 0
+		self.deck = self.initializedeck()
+		self.playercards = self.initializecards()
+		self.status = [[None,None,None,None,None,None,None]]*9 + self.playercards + [[None]]
+
 
 
 	def initializehands(self):
 		handlist = [hand(sortedlist,handvaldict)]*9
 		return(handlist)
-		
+
+	def initializedeck(self):
+		deck = []
+		for x in range(60):
+			deck += [x]
+		random.shuffle(deck)
+		return(deck)
+
+	def initializecards(self):
+		cards = [self.deck[0:7],self.deck[7:14]]
+		self.deck = self.deck[14:]
+		return(cards)
+
+
 	def updatestatus(self):
 		counter = 0
 		for x in self.hands:
@@ -26,6 +43,7 @@ class BLstatus:
 			self.status[counter] = newlist
 			counter+= 1
 			self.status[11] = self.winner()
+
 
 	def winner(self):
 		if self.ones >=5:
