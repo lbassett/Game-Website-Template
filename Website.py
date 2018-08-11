@@ -88,7 +88,7 @@ def logout():
 def get_othergames():
     gamelist = []
     for x in global_var.opengamedict:
-        gamelist.append([x,global_var.opengamedict[x].player1])
+        gamelist.append([x,global_var.opengamedict[x].player1,global_var.opengamedict[x].name])
     return(json.dumps(gamelist))
 
 @app.route('/get_currentgames')
@@ -97,24 +97,20 @@ def get_currentgames():
     username = session['user']
     for x in global_var.usergamesdict[username]:
         game1 = global_var.currentgamedict[x]
-        gamelist.append([x,game1.player1, game1.player2, game1.move])
+        gamelist.append([x,game1.player1, game1.player2, game1.move, game1.name])
     return(json.dumps(gamelist))
 
-@app.route('/make_game', methods=['POST'])
-def make_game():
-    username = session['user']
-    game1 = game(username,global_var.gameid)
-    global_var.opengamedict[global_var.gameid] = game1
-    global_var.gameid += 1
-    return(redirect('/'))
 
 @app.route('/new_game/<gamename>', methods=['POST'])
 def new_game(gamename):
-    username = session['user']
-    game1 = game(username,global_var.gameid)
-    global_var.opengamedict[global_var.gameid] = game1
-    global_var.gameid += 1
-    return(redirect('/'))
+    if gamename in global_var.realgames:
+        username = session['user']
+        game1 = game(username,global_var.gameid, gamename)
+        global_var.opengamedict[global_var.gameid] = game1
+        global_var.gameid += 1
+        return(redirect('/'))
+    else:
+        return(redirect('/'))
 
 
 @app.route('/join_game/<gameid>', methods = ['POST'])
