@@ -7,5 +7,6 @@ class game:
         self.player2 = None
         self.winner = None
         self.move = 1 # 1 means it's player1's move, -1 means it's player2's move
+        self.name = "BattleLine"
         self.status = None
 

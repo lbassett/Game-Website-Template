@@ -108,6 +108,15 @@ def make_game():
     global_var.gameid += 1
     return(redirect('/'))
 
+@app.route('/new_game/<gamename>', methods=['POST'])
+def new_game(gamename):
+    username = session['user']
+    game1 = game(username,global_var.gameid)
+    global_var.opengamedict[global_var.gameid] = game1
+    global_var.gameid += 1
+    return(redirect('/'))
+
+
 @app.route('/join_game/<gameid>', methods = ['POST'])
 def join_game(gameid):
     username = session['user']

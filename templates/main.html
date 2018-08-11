@@ -10,15 +10,17 @@
 <center><h1>Games</h1></center>
 <center><h2> {{user}} </h2></center>
 <div class="nav-bar">
+    <h2>Choose a New Game</h2>
 <div class="buttons">
-<div class="button newgame" onclick="newgame()">New Game</div>
-    <script>
-    function newgame() {
+<div class="button newgame" onclick="newgame('BattleLine')">Battle Lines</div>
+<div class="button newgame" onclick="newgame('BattleLine')">Tic Tac Toe</div>
+<script>
+    function newgame(gamename) {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/make_game", true);
+        xhr.open("POST", "/new_game/"+gamename, true);
         xhr.send();
     }
-    </script>
+</script>
 </div>
 </div>
 <h2>Open Games</h2>
