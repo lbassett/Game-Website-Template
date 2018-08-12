@@ -144,6 +144,29 @@ def cancel(gameid):
     else:
         return(redirect('/'))
 
+@app.route('/Battle_Lines/<gameid>', methods = ['GET'])
+def Battle_Lines(gameid):
+    if 'user' in session:
+        username = session['user']
+        idnum = int(gameid)
+        if idnum in global_var.currentgamedict:
+            game1 = global_var.currentgamedict[idnum]
+            if (username == game1.player1) or (username == game1.player2):
+                return(render_template('BattleLines.html', user = session['user'], gameid = gameid))
+            else:
+                return(redirect('/'))
+        else:
+            return(redirect('/'))
+    else:
+        return(redirect('/login'))
+
+@app.route('/get_game_status/<gameid>')
+def get_game_status(gameid):
+    idnum = int(gameid)
+    if idnum in global_var.currentgamedict:
+        status = global_var.currentgamedict[idnum].status
+        return(json.dumps(satus))
+
 
 @app.route('/js/<path:path>')
 def serve_js(path):
