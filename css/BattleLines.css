@@ -1,6 +1,21 @@
 body {
-  background-color: lightblue;
+  background-color: beige;
 }
+
+.Carddeck {
+  background-color: black;
+  width: 100%;
+  padding: 10px 0 10px;
+}
+
+.Carddeck .card {
+  border-radius: 6px;
+  padding: 3px;
+  position: relative;
+  color: black;
+}
+
+
 
 .nav-bar {
   background-color: #fff;
@@ -17,7 +32,7 @@ body {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 15px;
+  font-size: 10px;
   margin-right: auto;
   position: relative;
 }

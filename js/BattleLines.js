@@ -12,6 +12,8 @@ function rendergame(gameid, player) {
             playernum = 2
         }
 
+        var alertmessage = "";
+
         var i;
         colorcodes = ["Blue", "Yellow", "Orange", "Green", "Red", "Purple"];
         for (i = 0; i < 7; i++) {
@@ -22,18 +24,21 @@ function rendergame(gameid, player) {
                 var color = colorcodes[cardcolornum];
                 var cardnum = (card % 10) + 1;
                 playercardshtml += "<div class ='card' background-color='" + color + "'>" + cardnum.toString() + "</div>";
+                alertmessage+= cardnum.toString() + ", ";
             }
             else {
                 playercardshtml += "<div class ='card' background-color='white'>None</div>";
 
             }
         
+
+
         }
 
 
 
+    });  
 
-
-    });   
+    alert(playercardshtml);
     document.getElementById('PlayerCards').innerHTML = playercardshtml;
 }
