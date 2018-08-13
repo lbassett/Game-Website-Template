@@ -151,8 +151,10 @@ def Battle_Lines(gameid):
         idnum = int(gameid)
         if idnum in global_var.currentgamedict:
             game1 = global_var.currentgamedict[idnum]
-            if (username == game1.player1) or (username == game1.player2):
-                return(render_template('BattleLines.html', user = session['user'], gameid = gameid))
+            if (username == game1.player1):
+                return(render_template('BattleLines.html', user = session['user'], gameid = gameid, player = "player1"))
+            elif (username == game1.player2):
+                return(render_template('BattleLines.html', user = session['user'], gameid = gameid, player = "player2"))
             else:
                 return(redirect('/'))
         else:
