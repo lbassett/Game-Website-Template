@@ -12,7 +12,7 @@ class BLstatus:
 		self.twos = 0
 		self.deck = self.initializedeck()
 		self.playercards = self.initializecards()
-		self.status = [[None,None,None,None,None,None,None]]*9 + self.playercards + [[None]]
+		self.statusinfo = [[None,None,None,None,None,None,None]]*9 + self.playercards + [[None]]
 
 
 
@@ -40,7 +40,7 @@ class BLstatus:
 			newlist += x.P1Hand
 			newlist += [x.whowins()]
 			newlist += x.P2Hand
-			self.status[counter] = newlist
+			self.statusinfo[counter] = newlist
 			counter+= 1
 			self.status[11] = self.winner()
 

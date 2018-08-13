@@ -1,3 +1,4 @@
+import BattleLineStatus.py
 
 class game:
     
@@ -8,5 +9,15 @@ class game:
         self.winner = None
         self.move = 1 # 1 means it's player1's move, -1 means it's player2's move
         self.name = name
-        self.status = None
+        self.status = self.initializestatus()
+
+    def initializestatus(self):
+    	if self.name = "Battle Lines":
+    		newstatus = BLstatus()
+    		return(BLstatus)
+    	else:
+    		return(None)
+
+    def getstatus(self):
+    	return(self.status.statusinfo)
 

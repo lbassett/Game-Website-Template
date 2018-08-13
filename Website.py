@@ -164,8 +164,8 @@ def Battle_Lines(gameid):
 def get_game_status(gameid):
     idnum = int(gameid)
     if idnum in global_var.currentgamedict:
-        status = global_var.currentgamedict[idnum].status
-        return(json.dumps(satus))
+        status1 = global_var.currentgamedict[idnum].getstatus()
+        return(json.dumps(status1))
 
 
 @app.route('/js/<path:path>')
