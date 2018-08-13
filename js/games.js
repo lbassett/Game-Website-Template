@@ -27,17 +27,21 @@ function getcurrentgames(username) {
     $.getJSON(url, function(data) {
         var i;
         for (i = 0; i < data.length; i++) {
+            var linktogame = "/";
+            if (data[i][4] == "Battle Lines") {
+                linktogame += "Battle_Lines/" + data[i][0]; 
+            }
             if (data[i][1] == username){
                 if (data[i][3] == 1) {
-                    yourmovetablehtml += '<tr bgcolor="#EDEDED"><td>' + data[i][0] + '</td><td>'+ data[i][4]+'</td><td>' + data[i][2] + '</td></r>';
+                    yourmovetablehtml += '<tr bgcolor="#EDEDED"><td><a href = "'+ linktogame+'">' + data[i][0] + '</a></td><td>'+ data[i][4]+'</td><td>' + data[i][2] + '</td></r>';
                 } else if (data[i][3] == -1) {
-                    theirmovetablehtml += '<tr bgcolor="#EDEDED"><td>' + data[i][0] + '</td><td>'+ data[i][4]+'</td><td>' + data[i][2] + '</td></r>';
+                    theirmovetablehtml += '<tr bgcolor="#EDEDED"><td><a href = "'+ linktogame+'">' + data[i][0] + '</a></td><td>'+ data[i][4]+'</td><td>' + data[i][2] + '</td></r>';
                 }
             } else if (data[i][2] == username){
                 if (data[i][3] == 1) {
-                    theirmovetablehtml += '<tr bgcolor="#EDEDED"><td>' + data[i][0] + '</td><td>'+ data[i][4]+'</td><td>' + data[i][1] + '</td></r>';
+                    theirmovetablehtml += '<tr bgcolor="#EDEDED"><td><a href = "'+ linktogame+'">' + data[i][0] + '</a></td><td>'+ data[i][4]+'</td><td>' + data[i][1] + '</td></r>';
                 } else if (data[i][3] == -1) {
-                    yourmovetablehtml += '<tr bgcolor="#EDEDED"><td>' + data[i][0] + '</td><td>'+ data[i][4]+'</td><td>' + data[i][1] + '</td></r>';
+                    yourmovetablehtml += '<tr bgcolor="#EDEDED"><td><a href = "'+ linktogame+'">' + data[i][0] + '</a></td><td>'+ data[i][4]+'</td><td>' + data[i][1] + '</td></r>';
                 }
             }
         }

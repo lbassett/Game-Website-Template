@@ -1,4 +1,5 @@
-import BattleLineStatus.py
+import sys
+from BLstatus import *
 
 class game:
     
@@ -12,9 +13,11 @@ class game:
         self.status = self.initializestatus()
 
     def initializestatus(self):
-    	if self.name = "Battle Lines":
+    	if self.name == "Battle Lines":
+    		print("BLstatus")
     		newstatus = BLstatus()
-    		return(BLstatus)
+
+    		return(newstatus)
     	else:
     		return(None)
 

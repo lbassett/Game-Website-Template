@@ -4,10 +4,18 @@ function rendergame(gameid, player) {
     var playercardshtml = "";
     $.getJSON(url, function(data) {
         
+        var playernum;
+        if (player == "player1") {
+            playernum = 1;
+        }
+        else if (player == "player2") {
+            playernum = 2
+        }
+
         var i;
         colorcodes = ["Blue", "Yellow", "Orange", "Green", "Red", "Purple"];
-        for (i = 0; i < 9; i++) {
-            var cardstring = data[9][i];
+        for (i = 0; i < 7; i++) {
+            var cardstring = data[playernum+8][i];
             if (cardstring != "None") {
                 var card = Number(cardstring);
                 var cardcolornum = Math.floor(card / 10);

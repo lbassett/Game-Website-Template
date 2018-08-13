@@ -167,6 +167,7 @@ def get_game_status(gameid):
     idnum = int(gameid)
     if idnum in global_var.currentgamedict:
         status1 = global_var.currentgamedict[idnum].getstatus()
+        print(status1)
         return(json.dumps(status1))
 
 
