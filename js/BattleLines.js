@@ -23,22 +23,13 @@ function rendergame(gameid, player) {
                 var cardcolornum = Math.floor(card / 10);
                 var color = colorcodes[cardcolornum];
                 var cardnum = (card % 10) + 1;
-                playercardshtml += "<div class ='card' background-color='" + color + "'>" + cardnum.toString() + "</div>";
+                playercardshtml += "<div class ='card' style = 'background-color:" + color + "'>" + cardnum.toString() + "</div>";
                 alertmessage+= cardnum.toString() + ", ";
             }
             else {
                 playercardshtml += "<div class ='card' background-color='white'>None</div>";
-
             }
-        
-
-
         }
-
-
-
+        document.getElementById('PlayerCards').innerHTML = playercardshtml;
     });  
-
-    alert(playercardshtml);
-    document.getElementById('PlayerCards').innerHTML = playercardshtml;
 }
