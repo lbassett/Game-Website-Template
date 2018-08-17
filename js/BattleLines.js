@@ -60,24 +60,18 @@ function rendergame(gameid, player) {
             }
             var flaghtml = "";
             if (handlist[3] == 1) {
-                flaghtml += ;
-
+                flaghtml += "<div class = 'flag' style= 'color:red'>Player 1</div>";
             } else if (handlist[3] == 2) {
-
-            }
-
-
-
-            if (playernum == 1) {
-                handshtml += "<div class = 'hand'><div class = 'tophand'>"+p2cards+"</div><div class= 'bottomhand'>"+ p1cards +"</div></div>";
+                flaghtml += "<div class = 'flag' style= 'color:blue'>Player 2</div>";
             } else {
-                handshtml += "<div class = 'hand'><div class = 'tophand'>"+p1cards+"</div><div class= 'bottomhand'>"+ p2cards +"</div></div>";
+                flaghtml += "<div class = 'flag'></div>";
             }
-
+            if (playernum == 1) {
+                handshtml += "<div class = 'hand'><div class = 'tophand'>"+p2cards+"</div>" + flaghtml+ "<div class= 'bottomhand'>"+ p1cards +"</div></div>";
+            } else {
+                handshtml += "<div class = 'hand'><div class = 'tophand'>"+p1cards+"</div>" + flaghtml+ "<div class= 'bottomhand'>"+ p2cards +"</div></div>";
+            }
         }
-
-
-
-        document.getElementById('hands').innerHTML = ;
+        document.getElementById('hands').innerHTML = handshtml;
     });  
 }

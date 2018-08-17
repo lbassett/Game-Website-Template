@@ -20,7 +20,6 @@ body {
   display: inline-block;
   font-size: 80px;
   margin-right: auto;
-  position: relative;
   border: 10px solid black;
   width: 10%;
   height: 100px;
@@ -39,11 +38,24 @@ body {
   display: inline-block;
   font-size: 80px;
   margin-right: auto;
-  position: relative;
   border: 10px solid gold;
   width: 10%;
   height: 100px;
 
+}
+
+.hands {
+  width: 100%;
+  padding: 10px 0 10px;
+  text-align: center;
+}
+
+.hands .hand {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  width: 10%;
+  background-color: gray;
 }
 
 
