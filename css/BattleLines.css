@@ -58,6 +58,43 @@ body {
   background-color: gray;
 }
 
+.hands .hand .tophand {
+  padding: 5px;
+  border: 10px solid gray;
+}
+
+.hands .hand .bottomhand {
+  padding: 5px;
+  border: 10px solid gray;
+}
+
+.hands .hand .bottomhand:hover {
+  padding: 5px;
+  border: 10px solid gold;
+}
+
+.hands .hand .tophand .card {
+  width: 90%;
+  height: 60px;
+  margin: auto;
+  font-size: 30px;
+}
+
+.hands .hand .bottomhand .card {
+  width: 90%;
+  height: 60px;
+  margin: auto;
+  font-size: 30px;
+}
+
+.hands .hand .flag {
+  padding:5px;
+  border: 5px solid gray;
+  background-color: white;
+  width: 80%;
+  height: 60px;
+  font-size: 30px;
+}
 
 .nav-bar {
   background-color: #fff;

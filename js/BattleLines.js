@@ -16,7 +16,7 @@ function rendergame(gameid, player) {
         colorcodes = ["Blue", "Yellow", "Orange", "Green", "Red", "Purple"];
         for (i = 0; i < 7; i++) {
             var cardstring = data[playernum+8][i];
-            if (cardstring != "None") {
+            if (cardstring != null) {
                 var card = Number(cardstring);
                 var cardcolornum = Math.floor(card / 10);
                 var color = colorcodes[cardcolornum];
@@ -35,27 +35,27 @@ function rendergame(gameid, player) {
             var k;
             for (k = 0; k<3; k++) {
                 var cardstring = handlist[k];
-                if (cardstring != "None") {
+                if (cardstring != null) {
                     var card = Number(cardstring);
                     var cardcolornum = Math.floor(card / 10);
                     var color = colorcodes[cardcolornum];
                     var cardnum = (card % 10) + 1;
                     p1cards += "<div class ='card' style = 'background-color:" + color + "'>" + cardnum.toString() + "</div>";
                 } else {
-                    p1cards += "<div class ='card' background-color='white'>None</div>";
+                    p1cards += "<div class ='card' style = 'background-color:white'>None</div>";
                 }
             }
             var l;
-            for (l = 4; l<6; l++) {
+            for (l = 4; l<7; l++) {
                 var cardstring = handlist[l];
-                if (cardstring != "None") {
+                if (cardstring != null) {
                     var card = Number(cardstring);
                     var cardcolornum = Math.floor(card / 10);
                     var color = colorcodes[cardcolornum];
                     var cardnum = (card % 10) + 1;
                     p2cards += "<div class ='card' style = 'background-color:" + color + "'>" + cardnum.toString() + "</div>";
                 } else {
-                    p2cards += "<div class ='card' background-color='white'>None</div>";
+                    p2cards += "<div class ='card' style = 'background-color:white'>None</div>";
                 }
             }
             var flaghtml = "";
@@ -74,4 +74,8 @@ function rendergame(gameid, player) {
         }
         document.getElementById('hands').innerHTML = handshtml;
     });  
+}
+
+function makemove(card, destination) {
+
 }
