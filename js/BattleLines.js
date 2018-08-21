@@ -21,7 +21,7 @@ function rendergame(gameid, player) {
                 var cardcolornum = Math.floor(card / 10);
                 var color = colorcodes[cardcolornum];
                 var cardnum = (card % 10) + 1;
-                playercardshtml += "<div class ='card' style = 'background-color:" + color + "'>" + cardnum.toString() + "</div>";
+                playercardshtml += "<div class ='card' style = 'background-color:" + color + " id = 'card"+ cardstring+ "'>" + cardnum.toString() + "</div>";
             } else {
                 playercardshtml += "<div class ='card' background-color='white'>None</div>";
             }
@@ -67,9 +67,9 @@ function rendergame(gameid, player) {
                 flaghtml += "<div class = 'flag'></div>";
             }
             if (playernum == 1) {
-                handshtml += "<div class = 'hand'><div class = 'tophand'>"+p2cards+"</div>" + flaghtml+ "<div class= 'bottomhand'>"+ p1cards +"</div></div>";
+                handshtml += "<div class = 'hand'><div class = 'tophand'>"+p2cards+"</div>" + flaghtml+ "<div class= 'bottomhand' id = 'hand"+j.toString() +"'>"+ p1cards +"</div></div>";
             } else {
-                handshtml += "<div class = 'hand'><div class = 'tophand'>"+p1cards+"</div>" + flaghtml+ "<div class= 'bottomhand'>"+ p2cards +"</div></div>";
+                handshtml += "<div class = 'hand'><div class = 'tophand'>"+p1cards+"</div>" + flaghtml+ "<div class= 'bottomhand' id = 'hand"+j.toString() +"'>"+ p2cards +"</div></div>";
             }
         }
         document.getElementById('hands').innerHTML = handshtml;
