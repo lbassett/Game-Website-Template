@@ -8,18 +8,33 @@
 <body>
 <h1>Battlelines</h1>
 <div id = "hands" class = "hands"></div>
-<div id = "PlayerCards" class = "Carddeck" style = "background-color:grey"></div>
+<div id = "PlayerCards" class = "Carddeck" style = "background-color:grey">
+<!--
+
+	<div class ='card' id = 'card1'></div>
+	<div class ='card' id = 'card2'></div>
+	<div class ='card' id = 'card3'></div>
+	<div class ='card' id = 'card4'></div>
+	<div class ='card' id = 'card5'></div>
+	<div class ='card' id = 'card6'></div>
+	<div class ='card' id = 'card7'></div>
+-->
+</div>
 <script>rendergame('{{gameid}}','{{player}}')</script>
 <script>function ChooseHand(hand) {
 		var num = Number(hand);
 		var i;
+		alert(hand);
 		for (i = 0; i < 9; i++) {
 			if (i == num) {
 				var name = "hand" + i.toString();
-				document.getElementById(name).style.border = "10px solid gold";
+				//$(document.getElementById(name).style.border = "10px solid gold";);
+				$("#name").css("border", "10px solid gold");
+				
 			} else {
 				var name = "hand" + i.toString();
-				document.getElementById(name).style.border = "10px solid gray";
+				//$(document.getElementById(name).style.border = "10px solid gray";);
+				$("#name").css("border", "10px solid gray");
 			}
 		}
 	}
@@ -27,16 +42,21 @@
 <script>function ChooseCard(card) {
 		var num = Number(card);
 		var i;
+		alert(card);
 		for (i = 0; i < 7; i++) {
 			if (i == num) {
 				var name = "card" + i.toString();
-				document.getElementById(name).style.border = "10px solid gold";
+				//$(document.getElementById(name).style.border = "10px solid gold";);
+				$("#name").css("border", "10px solid gold");
 			} else {
 				var name = "card" + i.toString();
-				document.getElementById(name).style.border = "10px solid black";
+				//$(document.getElementById(name).style.border = "10px solid black";);
+				$("#name").css("border", "10px solid black");
 			}
 		}
 	}
 </script>
+
 </body>
+
 </html>
