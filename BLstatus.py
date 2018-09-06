@@ -51,7 +51,12 @@ class BLstatus:
 		for x in self.hands:
 			newlist = []
 			newlist += x.P1Hand
-			newlist += [x.whowins()]
+			victor = x.whowins
+			if victor == 1:
+				self.ones += 1
+			elif victor == 2:
+				self.twos += 2
+			newlist += [victor]
 			newlist += x.P2Hand
 			self.statusinfo[counter] = newlist
 			counter+= 1
