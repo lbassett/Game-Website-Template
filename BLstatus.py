@@ -33,6 +33,19 @@ class BLstatus:
 		return(cards)
 
 
+	def makemove(self, player, cardnum, handnum):
+		card = self.playercards[player][cardnum]
+		del(self.playercards[player][cardnum])
+		if player == 0:
+			self.hands[handnum].P1Hand += [card]
+		self.playercards[player] += [newcard]
+		else:
+			self.hands[handnum].P2Hand += [card]
+		newcard = self.deck[0]
+		self.playercards[player] += [newcard]
+		self.deck = self.deck[1:]
+		self.updatestatus()
+
 	def updatestatus(self):
 		counter = 0
 		for x in self.hands:
