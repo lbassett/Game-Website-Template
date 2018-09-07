@@ -167,7 +167,6 @@ def get_game_status(gameid):
     idnum = int(gameid)
     if idnum in global_var.currentgamedict:
         status1 = global_var.currentgamedict[idnum].getstatus()
-        print(status1)
         return(json.dumps(status1))
 
 @app.route('/send_game_move', methods = ['POST'])
@@ -175,6 +174,8 @@ def send_game_move():
     if 'user' in session:
         username = session['user']
         request.get_json
+        global_var.currentgamedict[gameid].makemove(player,cardnum,handnum)
+        return(True)
 
 @app.route('/js/<path:path>')
 def serve_js(path):
