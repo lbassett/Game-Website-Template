@@ -64,10 +64,12 @@ class BLstatus:
 
 
 	def winner(self):
+		onewins = False
+		twowins = False
 		if self.ones >=5:
-			return(1)
+			onewins = True
 		elif self.twos >= 5:
-			return(2)
+			twowins = True
 		else:
 			one = 0
 			two = 0
@@ -83,9 +85,17 @@ class BLstatus:
 					one = 0
 				pass
 				if one == 3:
-					return(1)
+					onewins = True
 				elif two == 3:
-					return(2)
+					twowins = True
+		if onewins and twowins:
+			return(3) # 3 in the case of a tie
+		elif onewins:
+			return(1)
+		elif twowins:
+			return(2)
+		else:
+			return(0)
 
 
 
