@@ -14,7 +14,6 @@ class game:
 
     def initializestatus(self):
     	if self.name == "Battle Lines":
-    		print("BLstatus")
     		newstatus = BLstatus()
 
     		return(newstatus)
