@@ -38,9 +38,9 @@ class BLstatus:
 		del(self.playercards[player][cardnum])
 		if player == 0:
 			self.hands[handnum].P1Hand += [card]
-		self.playercards[player] += [newcard]
 		else:
 			self.hands[handnum].P2Hand += [card]
+		self.playercards[player] += [newcard]
 		newcard = self.deck[0]
 		self.playercards[player] += [newcard]
 		self.deck = self.deck[1:]
