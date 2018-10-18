@@ -1,5 +1,6 @@
 import sys
 from BLstatus import *
+from TTTstatus import *
 
 class game:
     
@@ -15,8 +16,10 @@ class game:
     def initializestatus(self):
     	if self.name == "Battle Lines":
     		newstatus = BLstatus()
-
     		return(newstatus)
+        elif self.name == "Tic Tac Toe":
+            newstatus = TTTstatus()
+            return(newstatus)
     	else:
     		return(None)
 
